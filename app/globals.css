@@ -166,3 +166,75 @@
   .brand { max-width:none; }
   .header-actions { margin-left:0; }
 }
+
+/* Tactile lab surface: precise data, soft cursor light, no moving controls. */
+:root { --pointer-light:#76ad8524; --lift-shadow:0 12px 32px #24352a0c; --accent-warm:#ab8650; }
+:root[data-theme="dark"] { --pointer-light:#9fdfb122; --lift-shadow:0 16px 40px #00000033; --accent-warm:#d1b47b; }
+.site { position:relative; isolation:isolate; }
+.site::before { content:""; position:absolute; z-index:-1; pointer-events:none; inset:0 0 auto; height:540px; background:radial-gradient(ellipse at 70% 0%,var(--pointer-light),transparent 65%); }
+.topbar { background:color-mix(in srgb,var(--surface-raised) 85%,transparent); }
+.brand-icon { box-shadow:0 3px 8px #19352208; }
+.page-heading h1 { max-width:900px; }
+.page-heading h1>span { color:var(--accent-warm); }
+.heading-stamp { border-left:1px solid var(--border); padding-left:24px; }
+.heading-stamp>span { color:var(--accent-warm); }
+.metric,.flow-card,.chart-panel,.policy-panel,.bank-panel { position:relative; isolation:isolate; transition:border-color 200ms ease,box-shadow 250ms ease; }
+.metric::after,.flow-card::after,.chart-panel::after,.policy-panel::after,.bank-panel::after { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1; background:radial-gradient(260px circle at var(--pointer-x,50%) var(--pointer-y,0%),var(--pointer-light),transparent 75%); opacity:0; transition:opacity 280ms ease; }
+[data-pointer="true"]::after { opacity:1; }
+.metric[data-pointer="true"],.flow-card[data-pointer="true"],.chart-panel[data-pointer="true"],.policy-panel[data-pointer="true"],.bank-panel[data-pointer="true"] { border-color:color-mix(in srgb,var(--chart-green) 45%,var(--border)); box-shadow:var(--lift-shadow); }
+.metric { border-top:2px solid color-mix(in srgb,var(--chart-green) 45%,var(--border)); }
+.metric:nth-child(2) { border-top-color:color-mix(in srgb,var(--accent-warm) 65%,var(--border)); }
+.metric strong,.flow-card strong { font-variant-numeric:tabular-nums; }
+.flow-card { overflow:hidden; }
+.flow-number { display:flex; align-items:center; gap:8px; }
+.flow-number::before { content:""; width:5px; height:5px; border-radius:50%; background:var(--chart-guide); flex-shrink:0; }
+.flow-card.recycled .flow-number::before { background:var(--chart-green); }
+.chart-inspector { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:12px 14px; margin-top:18px; border:1px solid var(--border); border-radius:8px; background:color-mix(in srgb,var(--surface-soft) 70%,transparent); }
+.inspector-day { color:var(--text-secondary); font-size:.75rem; font-variant-numeric:tabular-nums; }
+.chart-inspector strong { color:var(--ink); font-size:1.125rem; font-weight:550; font-variant-numeric:tabular-nums; }
+.chart-inspector small { color:var(--text-muted); font-size:.75rem; font-weight:400; }
+.chart-instruction { font-size:.75rem; color:var(--text-muted); line-height:1.6; padding:8px 2px 6px; }
+.chart[role="slider"] { cursor:crosshair; border-radius:6px; touch-action:pan-y; }
+.chart[role="slider"]:focus-visible { outline:2px solid var(--chart-green); outline-offset:5px; }
+.value-arrive { display:inline-block; }
+.preset,.segmented button,.theme-switch,.language-switch button { transition:background-color 180ms ease,border-color 180ms ease,box-shadow 180ms ease,transform 180ms ease; }
+.preset.selected { box-shadow:inset 3px 0 0 var(--chart-guide); }
+.preset .scenario-dot { transition:box-shadow 180ms ease; }
+.preset.selected .scenario-dot { box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-guide) 15%,transparent); }
+.source-link svg,footer>a svg { transition:transform 180ms ease; }
+.assumptions summary svg,.daily-ledger summary>svg { transition:transform 200ms ease; }
+.assumptions[open] summary svg,.daily-ledger[open] summary>svg { transform:rotate(180deg); }
+@media(prefers-reduced-motion:no-preference) {
+  .page-heading { animation:surface-arrive 550ms both; }
+  .notice { animation:surface-arrive 550ms 55ms both; }
+  .controls-panel { animation:surface-arrive 550ms 90ms both; }
+  .metrics .metric { animation:surface-arrive 500ms 110ms both; }
+  .metrics .metric:nth-child(2) { animation-delay:150ms; }
+  .metrics .metric:nth-child(3) { animation-delay:190ms; }
+  .chart-panel { animation:surface-arrive 600ms 210ms both; }
+  .insight { animation:surface-arrive 550ms 250ms both; }
+  .value-arrive { animation:value-arrive 260ms ease-out both; }
+  .chart-line { stroke-dasharray:1; animation:trace-line 450ms cubic-bezier(.25,.65,.3,1) both; }
+  .chart-crosshair { animation:crosshair-arrive 120ms ease-out; }
+  .theme-switch svg { animation:icon-arrive 250ms ease-out; }
+  .site[data-playing="true"] .play { box-shadow:0 0 0 4px color-mix(in srgb,var(--chart-green) 16%,transparent); }
+  @media(hover:hover) and (pointer:fine) {
+    .preset:hover { transform:translateX(3px); }
+    .segmented button:hover:not(.active),.language-switch button:hover { background:var(--surface); }
+    .theme-switch:hover { transform:translateY(-2px); box-shadow:var(--lift-shadow); }
+    .source-link:hover svg,footer>a:hover svg { transform:translate(2px,-2px); }
+    .flow-card:hover .flow-number::before { box-shadow:0 0 0 5px var(--pointer-light); }
+    .play:hover { transform:scale(1.08); }
+  }
+}
+@keyframes surface-arrive { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes value-arrive { from { opacity:.4; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+@keyframes trace-line { from { stroke-dashoffset:1; } to { stroke-dashoffset:0; } }
+@keyframes crosshair-arrive { from { opacity:0; } to { opacity:1; } }
+@keyframes icon-arrive { from { transform:rotate(-25deg) scale(.85); } to { transform:rotate(0) scale(1); } }
+@media(prefers-reduced-motion:reduce) {
+  .site *, .site *::before, .site *::after { animation:none!important; transition:none!important; }
+  .chart-line { stroke-dasharray:none; }
+  [data-pointer]::after { opacity:0; }
+}
+@media(hover:none),(pointer:coarse) { .metric::after,.flow-card::after,.chart-panel::after,.policy-panel::after,.bank-panel::after { display:none; } }

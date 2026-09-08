@@ -7,7 +7,7 @@ Independent educational Standard Reserve model by @intelpocik. Not endorsed by t
 Use Node.js 24 LTS. Install dependencies with `npm ci` first.
 
 - `npm run dev`
-- `node --test lib/simulator.test.ts lib/i18n.test.ts`
+- `node --test lib/simulator.test.ts lib/i18n.test.ts lib/chart-interaction.test.ts`
 - `npx tsc --noEmit`
 - `npm run build`
 
@@ -19,7 +19,11 @@ The model conserves initial ledger + new issuance = remaining ledger + wallet pa
 
 ## Verification and remaining gaps
 
-Nine automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, and safe preference loading. Type checking and a production build pass. Local HTTP returned 200. Browser visual/interaction QA was not requested and has not been performed.
+Twelve automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, safe preference loading, pointer-to-day mapping and keyboard navigation. Type checking and a production build pass. Local HTTP returned 200. Browser visual/interaction QA was not requested and has not been performed.
+
+## Interaction design
+
+Hover over the chart to inspect a day; click or tap to select it across the simulator. The focused chart also supports arrow keys, Home and End. Card lighting follows mouse movement without altering model state. Chart reveals, value transitions and entrance animations respect reduced-motion settings; touch users retain every functional control without hover effects. Displayed numbers are exact model results, not interpolated financial values.
 
 Optional WebMCP `set_simulation_scenario` registration is feature-detected and cleaned up on unmount. No supported WebMCP invocation context was available for runtime verification; its browser contract remains unverified.
 

@@ -1,6 +1,9 @@
 export type Language = 'en' | 'ru';
 export type Theme = 'light' | 'dark';
 export const russian: Record<string, string> = {
+  "Selected": "Выбрано",
+  "Preview": "Просмотр",
+  "Hover to inspect. Click or use arrow keys to select a day.": "Наведите курсор, чтобы увидеть значения. Выберите день кликом, касанием или стрелками клавиатуры.",
   "/ COMMUNITY LAB": "/ ЛАБОРАТОРИЯ СООБЩЕСТВА",
   "Read the whitepaper": "Документация проекта",
   "INTERACTIVE MECHANICS EXPLORER": "МЕХАНИКИ ПРОТОКОЛА В ДЕЙСТВИИ",
