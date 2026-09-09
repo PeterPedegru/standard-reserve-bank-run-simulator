@@ -1,25 +1,31 @@
 # Bank Run Simulator
 
-Independent educational Standard Reserve model by @intelpocik. Not endorsed by the project. English and Russian interfaces with light/dark themes and device-local preferences. No wallets, financial transactions, live data or price model.
+Independent educational Standard Reserve model by @intelpocik. Not endorsed by the project. English and Russian interfaces with light/dark themes and device-local preferences. No wallets, financial transactions, live data or price forecast.
+
+## Personal valuation scenarios
+
+One NFT represents 1–10 existing, equally funded branches. Price = assumed market cap / assumed circulating supply, not maximum supply. Inputs stay fixed across days; they are not live observations or derived from this toy ledger.
+
+Daily issuance accrual is shown in STANDARD and hypothetical USD, with no-exit and half-price comparisons. It is not a daily payout. A separate retirement quote adds the withdrawal to the trailing seven-day window and recalculates the fee before redistribution, without changing the simulation. Retiring the final branch burns the charter. Balances include assumed opening balances. Gas, slippage, acquisition/expansion costs and liquidity are excluded; values are not profit or executable sale quotes.
 
 ## Run and verify
 
 Use Node.js 24 LTS. Install dependencies with `npm ci` first.
 
 - `npm run dev`
-- `node --test lib/simulator.test.ts lib/i18n.test.ts lib/chart-interaction.test.ts`
+- `node --test lib/simulator.test.ts lib/i18n.test.ts lib/chart-interaction.test.ts lib/valuation.test.ts`
 - `npx tsc --noEmit`
 - `npm run build`
 
 ## Model
 
-Source: https://www.standardreserve.xyz/whitepaper/ checked 2026-09-08 (public whitepaper-CWJ24W4_.js). Exact launch fee and policy parameters are redacted. All chosen numerical parameters and ordering assumptions are disclosed on the page. This is not a smart-contract replica.
+Source: https://www.standardreserve.xyz/whitepaper/ checked 2026-09-09 (public whitepaper-CWJ24W4_.js). Exact launch fee and policy parameters are redacted. All chosen numerical parameters and ordering assumptions are disclosed on the page. This is not a smart-contract replica.
 
 The model conserves initial ledger + new issuance = remaining ledger + wallet payouts + cancelled fee entitlement. Fee recycling does not consume new issuance budget. Pool flow is independent of branch retirement. No new branches, auctions, dormancy, token sales or actual buybacks are simulated.
 
 ## Verification and remaining gaps
 
-Twelve automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, safe preference loading, pointer-to-day mapping and keyboard navigation. Type checking and a production build pass. Local HTTP returned 200. Browser visual/interaction QA was not requested and has not been performed.
+Fifteen automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, safe preference loading, pointer-to-day mapping, keyboard navigation, valuation arithmetic and additional-withdrawal quoting. Type checking and a production build pass. Local HTTP returned 200. Browser visual/interaction QA was not requested and has not been performed.
 
 ## Interaction design
 
