@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: '/favicon.svg' },
   title: 'Bank Run Simulator — Standard Reserve Community Lab',
   description: 'Explore branch exits, fee redistribution and issuance with an independent, assumption-led Standard Reserve simulator. By @intelpocik.',
 };

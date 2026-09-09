@@ -25,7 +25,7 @@ The model conserves initial ledger + new issuance = remaining ledger + wallet pa
 
 ## Verification and remaining gaps
 
-Fifteen automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, safe preference loading, pointer-to-day mapping, keyboard navigation, valuation arithmetic and additional-withdrawal quoting. Type checking and a production build pass. Local HTTP returned 200. Browser visual/interaction QA was not requested and has not been performed.
+Fifteen automated tests cover 30 scenario combinations, conservation, exit counts, fee bounds, rolling-window decay, policy lag, input rejection, translation coverage and placeholders, locale-aware numbers, safe preference loading, pointer-to-day mapping, keyboard navigation, valuation arithmetic and additional-withdrawal quoting. Type checking and a production build pass. Local HTTP returned 200. Browser QA on 9 September 2026 covered light/dark and English/Russian views, 390/768/1440px widths without horizontal overflow, pointer lighting above and below the chart (the chart excluded), reduced motion, market-cap and branch-count changes, partial retirement, scenario/day synchronization, keyboard chart navigation and the daily table. No browser errors remained after adding the existing SVG favicon to metadata.
 
 ## Interaction design
 

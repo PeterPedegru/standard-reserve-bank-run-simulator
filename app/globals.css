@@ -178,10 +178,10 @@
 .page-heading h1>span { color:var(--accent-warm); }
 .heading-stamp { border-left:1px solid var(--border); padding-left:24px; }
 .heading-stamp>span { color:var(--accent-warm); }
-.metric,.flow-card,.chart-panel,.policy-panel,.bank-panel { position:relative; isolation:isolate; transition:border-color 200ms ease,box-shadow 250ms ease; }
-.metric::after,.flow-card::after,.chart-panel::after,.policy-panel::after,.bank-panel::after { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1; background:radial-gradient(260px circle at var(--pointer-x,50%) var(--pointer-y,0%),var(--pointer-light),transparent 75%); opacity:0; transition:opacity 280ms ease; }
+:is(.metric,.flow-card,.policy-panel,.bank-panel,.position-inputs,.position-results,.exit-experiment,.methodology,.daily-ledger,.controls-panel) { position:relative; isolation:isolate; transition:border-color 200ms ease,box-shadow 250ms ease; }
+:is(.metric,.flow-card,.policy-panel,.bank-panel,.position-inputs,.position-results,.exit-experiment,.methodology,.daily-ledger,.controls-panel)::after { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1; background:radial-gradient(260px circle at var(--pointer-x,50%) var(--pointer-y,0%),var(--pointer-light),transparent 75%); opacity:0; transition:opacity 280ms ease; }
 [data-pointer="true"]::after { opacity:1; }
-.metric[data-pointer="true"],.flow-card[data-pointer="true"],.chart-panel[data-pointer="true"],.policy-panel[data-pointer="true"],.bank-panel[data-pointer="true"] { border-color:color-mix(in srgb,var(--chart-green) 45%,var(--border)); box-shadow:var(--lift-shadow); }
+:is(.metric,.flow-card,.policy-panel,.bank-panel,.position-inputs,.position-results,.exit-experiment,.methodology,.daily-ledger,.controls-panel)[data-pointer="true"] { border-color:color-mix(in srgb,var(--chart-green) 45%,var(--border)); box-shadow:var(--lift-shadow); }
 .metric { border-top:2px solid color-mix(in srgb,var(--chart-green) 45%,var(--border)); }
 .metric:nth-child(2) { border-top-color:color-mix(in srgb,var(--accent-warm) 65%,var(--border)); }
 .metric strong,.flow-card strong { font-variant-numeric:tabular-nums; }
@@ -237,7 +237,7 @@
   .chart-line { stroke-dasharray:none; }
   [data-pointer]::after { opacity:0; }
 }
-@media(hover:none),(pointer:coarse) { .metric::after,.flow-card::after,.chart-panel::after,.policy-panel::after,.bank-panel::after { display:none; } }
+@media(hover:none),(pointer:coarse) { :is(.metric,.flow-card,.policy-panel,.bank-panel,.position-inputs,.position-results,.exit-experiment,.methodology,.daily-ledger,.controls-panel)::after { display:none; } }
 
 /* Personal valuation is a separate, explicitly hypothetical layer. */
 .position-explorer { margin:28px 0 44px; border:1px solid var(--border); border-radius:24px; background:var(--surface); overflow:hidden; }

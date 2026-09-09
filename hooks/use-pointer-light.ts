@@ -17,7 +17,7 @@ export function usePointerLight(rootRef:RefObject<HTMLDivElement|null>){
     }
     function move(event:PointerEvent){
       if(event.pointerType!=='mouse'||!fine.matches||reduced.matches){reset();return;}
-      const card=event.target instanceof Element?event.target.closest<HTMLElement>('.metric,.flow-card,.policy-panel,.bank-panel'):null;
+      const card=event.target instanceof Element?event.target.closest<HTMLElement>('.metric,.flow-card,.policy-panel,.bank-panel,.position-inputs,.position-results,.exit-experiment,.methodology,.daily-ledger,.controls-panel'):null;
       if(!card||!root?.contains(card)){reset();return;}
       if(active!==card){reset();active=card;}
       x=event.clientX;y=event.clientY;
