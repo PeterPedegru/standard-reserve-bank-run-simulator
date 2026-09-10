@@ -20,7 +20,7 @@ test('Russian catalog retains all dynamic values and translates the scenarios', 
 
 test('every literal translation call has a Russian entry; visible text has no untranslated sentences', () => {
   const source = readFileSync(new URL('../app/page.tsx', import.meta.url), 'utf8');
-  const component = readFileSync(new URL('../components/position-explorer.tsx', import.meta.url), 'utf8');
+  const component = readFileSync(new URL('../components/position-explorer.tsx', import.meta.url), 'utf8') + readFileSync(new URL('../components/strategy-comparison.tsx', import.meta.url), 'utf8');
   const ast = ts.createSourceFile('page.tsx', source+'\n'+component, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   const allowed = new Set(['STANDARD RESERVE', 'STANDARD', '1 STANDARD =', 'STD', 'EN', 'RU', 'by @intelpocik']);
   let calls = 0;
