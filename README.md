@@ -27,7 +27,7 @@ Use Node.js 24 LTS. Install dependencies with `npm ci` first.
 
 ## Vercel
 
-`next.config.ts` enables Vinext static export. `vercel.json` runs the standard build and publishes `dist/client`, which contains the generated `index.html`. No server runtime, wallet connection, or environment variables are required.
+`next.config.ts` enables Vinext static export. `vercel.json` uses Vercel's Vite preset, runs the standard build and publishes `dist/client`, which contains the generated `index.html`. No server runtime, wallet connection, or environment variables are required.
 
 ## Model
 
