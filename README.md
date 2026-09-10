@@ -25,6 +25,10 @@ Use Node.js 24 LTS. Install dependencies with `npm ci` first.
 - `npx tsc --noEmit`
 - `npm run build`
 
+## Vercel
+
+`next.config.ts` enables Vinext static export. `vercel.json` runs the standard build and publishes `dist/client`, which contains the generated `index.html`. No server runtime, wallet connection, or environment variables are required.
+
 ## Model
 
 Source: https://www.standardreserve.xyz/whitepaper/ checked 2026-09-09 (public whitepaper-CWJ24W4_.js). Exact launch fee and policy parameters are redacted. All chosen numerical parameters and ordering assumptions are disclosed on the page. This is not a smart-contract replica.
